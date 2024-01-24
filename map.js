@@ -7,7 +7,6 @@ const map = (array, fn) => {
     if (ind === arr.length) return res
 
     res.push(fn(arr[ind]))
-
     return pushElements(arr, res, ++ind, fn)
   }
 
@@ -28,4 +27,4 @@ const map2 = (fn) => ([x, ...xs]) => {
 
 const add2 = map2(add(2))
 // console.log(map2([1, 2, 3, 4, 5])(add(2)))
-console.log(add2([1, 2, 3, 4, 5]))
+// console.log(add2([1, 2, 3, 4, 5]))
