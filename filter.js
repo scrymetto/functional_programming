@@ -18,9 +18,9 @@ const reduceLeft = (fn, [x, ...xs], initVal) => {
     : reduceLeft(fn, xs, fn(initVal, x))
 }
 
-const filterR = (fn, [x, ...xs]) => {
-  if (x == null) return []
+const filterR = (fn, arr) => {
+  if (arr[0] == null) return []
   const newFunc = (fn) => (acc, curr) => fn(curr) ? [...acc, curr] : acc
-  return reduceLeft(newFunc(fn), xs, [])
+  return reduceLeft(newFunc(fn), arr, [])
 }
-console.log(filterR(predicate, [1, 2, 3, 4, 5]))
+console.log(filterR(predicate, [6, 2, 3, 4, 5]))
