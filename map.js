@@ -28,3 +28,15 @@ const map2 = (fn) => ([x, ...xs]) => {
 const add2 = map2(add(2))
 // console.log(map2([1, 2, 3, 4, 5])(add(2)))
 // console.log(add2([1, 2, 3, 4, 5]))
+
+const reduceLeft = (fn, [x, ...xs], initVal) => {
+  return x == null
+    ? initVal
+    : reduceLeft(fn, xs, fn(initVal, x))
+}
+const mapR = (fn, arr) => {
+  if (arr[0] == null) return []
+  const newFunc = (fn) => (acc, curr) => [...acc, fn(curr)]
+  return reduceLeft(newFunc(fn), arr, [])
+}
+console.log(mapR(add(2), [1, 2, 3, 4, 5]))
